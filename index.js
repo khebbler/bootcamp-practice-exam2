@@ -107,6 +107,7 @@ const setDigitalCode = function(array, value){
    
 };
 
+
 // PROBLEM #2 //
 
 const filterByGenreTag = function(array, tag){
@@ -115,15 +116,15 @@ const filterByGenreTag = function(array, tag){
         // Looping through genreTags array
         for (let i = 0; i < movie.genreTags.length; i++) {
             // if genreTag matches input tag
-            if (movie.genreTag[i] === tag) {
+            if (movie.genreTags[i] === tag) {
                 return true;
             }
         }
-        //
+        // otherwise return false
         return false;
-        
+
     });
-   
+
 
 };
 
@@ -131,21 +132,46 @@ const filterByGenreTag = function(array, tag){
 
 // PROBLEM #3 //
 
-const filterBySpecialFeatureType = function(){
-    
+const filterBySpecialFeatureType = function(array, type){
+    // filtering through movies array
+    return array.filter(function(movie){
+        // returning movies that include type specialFeature
+        return movie.specialFeatures.includes(type);
+    })
+
 };
 
 
 // PROBLEM #4 //
 
 const getTopSpecialFeature = function(array, title){
+    // base
+    // if array is empty
+    if (array.length === 0) {
+        return "no matching title found";
+    }
+    // first movie in array
+    let movie = array[0];
+    // if movie title matches input title
+    if (movie.title === title) {
+        // returning formatted string
+        return movie.title + ' Special Feature: ' + movie.specialFeatures[0];
+    }
+    // recursion
+    // calling func again with rest of array minus first element
+    return getTopSpecialFeature(array.slice(1), title)
     
 };
 
 
 // PROBLEM #5 //
 
-const mapTitles = function(){
+const mapTitles = function(array){
+    // looping through each movie in array using map
+    return array.map(function(movie) {
+        // returning formatted string with title, year, director
+        return `${movie.title} (${movie.year}) - dir. ${movie.director}`
+    })
     
 };
 
@@ -153,18 +179,36 @@ const mapTitles = function(){
 
 // PROBLEM #6 //
 
-const mapSpecialFeatures = function(){
+const mapSpecialFeatures = function(array){
+    // looping through each movie in array using map
+    return array.map(function(movie) {
+        // returning titles of special features
+        return movie.specialFeatures;
+
+
+    })
+
     
 };
 
 // PROBLEM #7 //
 
-const createNonsenseString = function(){
+const createNonsenseString = function(array, index){
+    // Looping through array of movies using reduce
+    return array.reduce(function(acc, current) {
+
+
+    }, "");
     
 };
 
 // PROBLEM #8 //
 
-const getValues = function(){
+const getValues = function(object, props){
+    // Looping through props array (keys) using map
+    return props.map(function(key) {
+        // returning new arary with values that exist at that key
+        return object[key];
+    })
     
 };
