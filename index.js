@@ -93,14 +93,38 @@ const collection = [
 
 // PROBLEM #1 //
 
-const setDigitalCode = function(){
+
+const setDigitalCode = function(array, value){
+
+    // looping backwards through every other element in array
+    for (let i = array.length - 1; i >= 0; i -= 2) {
+        // assiging value to digitalCode
+        array[i].digitalCode = value;
+    }
+    // returning updated array
+    return array;
+
    
 };
 
 // PROBLEM #2 //
 
-const filterByGenreTag = function(){
-    
+const filterByGenreTag = function(array, tag){
+    // filtering through each movie in array of movies
+    return array.filter(function(movie) {
+        // Looping through genreTags array
+        for (let i = 0; i < movie.genreTags.length; i++) {
+            // if genreTag matches input tag
+            if (movie.genreTag[i] === tag) {
+                return true;
+            }
+        }
+        //
+        return false;
+        
+    });
+   
+
 };
 
 
